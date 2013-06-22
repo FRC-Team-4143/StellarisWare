@@ -32,7 +32,7 @@
 // The firmware version.
 //
 //*****************************************************************************
-const unsigned long g_ulFirmwareVersion = 9107;
+const unsigned long g_ulFirmwareVersion = 6969;
 
 //*****************************************************************************
 //

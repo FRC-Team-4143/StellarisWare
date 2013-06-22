@@ -314,6 +314,11 @@ ControllerLinkGood(unsigned long ulType)
         HWREGBITW(&g_ulFlags, FLAG_CAN_LINK) = 0;
         HWREGBITW(&g_ulFlags, FLAG_UART_LINK) = 0;
         HWREGBITW(&g_ulFlags, FLAG_SERVO_LINK) = 1;
+
+	//RJS setup position mode here
+	ADCPotTurnsSet(1);
+        ControllerPositionSrcSet(LM_REF_POT);
+	ControllerPositionModeSet(1, 0);
     }
 
     //
@@ -341,6 +346,9 @@ ControllerLinkLost(unsigned long ulType)
         case LINK_TYPE_SERVO:
         {
             HWREGBITW(&g_ulFlags, FLAG_SERVO_LINK) = 0;
+
+	    // RJS disable position mode here
+	    ControllerVoltageModeSet(0);
 
             break;
         }
@@ -2105,6 +2113,7 @@ static void
 ControllerPositionMode(void)
 {
     long lTemp;
+    
 
     //
     // Get the motor position.
@@ -2131,7 +2140,33 @@ ControllerPositionMode(void)
     // Run the PID controller, with the output being the output voltage that
     // should be driven to the motor.
     //
-    lTemp = PIDUpdate(&g_sPositionPID, lTemp) / 256;
+    // RJS control changes
+    //lTemp = PIDUpdate(&g_sPositionPID, lTemp) / 256;
+
+/*    This code worked ok - RJS
+     long negative = 0;
+     if(lTemp <0) {
+ 	lTemp *= -1;
+	negative = 1;
+      }
+
+      // proportional gain
+      // bug in MathMul16x16 when both negative
+     lTemp = MathMul16x16(lTemp, lTemp);
+
+     if(!negative)
+     	lTemp *= 20;
+     else
+	lTemp *= -30;
+*/
+
+    // this is simple forward/reverse with position deadband
+    if(lTemp > 512)
+	lTemp = 32768;
+    else if(lTemp < -512)
+	lTemp = -32767;
+    else
+	lTemp = 0;
 
     //
     // Limit the output voltage to the valid values.

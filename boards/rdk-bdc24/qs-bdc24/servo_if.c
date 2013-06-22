@@ -264,7 +264,9 @@ ServoIFIntHandler(void)
                 // Calibration mode is not active, so interpret the input pulse
                 // and send a voltage command.
                 //
-                CommandVoltageSet(ServoIFPulseInterpret(ulWidth));
+                //CommandVoltageSet(ServoIFPulseInterpret(ulWidth));
+		//RJS
+                CommandPositionSet(ServoIFPulseInterpret(ulWidth));
             }
 
             //
