@@ -2134,7 +2134,7 @@ ControllerPositionMode(void)
     //
     // Compute the error between the target position and the motor position.
     //
-    lTemp = g_lPositionTarget - lTemp;
+    lTemp = g_lPositionTarget - lTemp + 32676;
 
     //
     // Run the PID controller, with the output being the output voltage that
