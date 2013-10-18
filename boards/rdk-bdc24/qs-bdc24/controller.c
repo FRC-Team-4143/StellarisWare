@@ -2173,11 +2173,11 @@ ControllerPositionMode(void)
     //
     if(lTemp < -32768)
     {
-        lTemp = -32768;
+        lTemp = -32768/1.5;
     }
     if(lTemp > 32767)
     {
-        lTemp = 32767;
+        lTemp = 32767/1.5;
     }
 
     //
