@@ -2161,10 +2161,14 @@ ControllerPositionMode(void)
 */
 
     // this is simple forward/reverse with position deadband
-    if(lTemp > 512)
-	lTemp = 32768;
+    if(lTemp > 1024)
+	lTemp = 32768/1.5;
+    else if(lTemp < -1024)
+	lTemp = -32767/1.5;
+    else if(lTemp > 512)
+	lTemp = 32768/2.5;
     else if(lTemp < -512)
-	lTemp = -32767;
+	lTemp = -32767/2.5;
     else
 	lTemp = 0;
 
