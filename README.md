@@ -15,3 +15,7 @@ https://launchpad.net/gcc-arm-embedded/+download
 You also might try to install package "arm-none-eabi-gcc-linux".  It might be in some distros.
 
 To flash firmware to device you need to use a 2CAN ethernet to can bridge or a custom made serial cable with BDC-COM software.
+
+Package for ubuntu 14.04 is gcc-arm-none-eabi
+
+
