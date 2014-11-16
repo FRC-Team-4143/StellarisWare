@@ -16,6 +16,7 @@ You also might try to install package "arm-none-eabi-gcc-linux".  It might be in
 
 To flash firmware to device you need to use a 2CAN ethernet to can bridge or a custom made serial cable with BDC-COM software.
 
+UPDATE:
 Package for ubuntu 14.04 is gcc-arm-none-eabi
 
 
