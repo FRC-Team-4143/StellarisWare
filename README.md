@@ -19,4 +19,21 @@ To flash firmware to device you need to use a 2CAN ethernet to can bridge or a c
 UPDATE:
 Package for ubuntu 14.04 is gcc-arm-none-eabi
 
+TO FLASH TO A BLACK JAGUAR:
+The 2Can has a default IP address of 10.0.0.10.
+Get a Windows laptop setup with ethernet on 10.0.0.9 or something.
+Download the compiled firmware from github or the repo.
+StellarisWare/boards/rdk-bdc24/qs-bdc24/gcc/qs-bdc24.bin
+
+Add http://10.0.0.10 as a trusted site in Internet Explorer
+Add http://10.0.0.10 as an exception in Java.
+
+Go to http://10.0.0.10 in Internet Explorer
+To the "node update".  Make sure the java applet loads in the bottom of the page.
+Select "jaguar" and the qs-bdc24.bin file
+
+If it works, the version will be 6969.
+
+
+
 
